@@ -22,7 +22,13 @@
 - [AWS Account](https://aws.amazon.com/account/)
 - Basic [Consul](https://www.consul.io/) knowledge
 
-
+### Clone the repo
+```
+git clone https://github.com/chavo1/aws-env-consul-terraform.git
+cd aws-env-consul-terraform
+terraform init
+terraform apply
+```
 ## AWS EC2 (Consul clients) deployment.
 
 ### After deploying the Infra and Consul servers is time for Consul clients.
@@ -33,28 +39,3 @@
 terraform init
 terraform apply 
 ```
-
-
-
-├── consul_client_dc1
-│   ├── main.tf
-│   └── scripts
-│       ├── consul-template.sh
-│       ├── consul.sh
-│       ├── dns.sh
-│       ├── kv.sh
-│       ├── nginx.sh
-│       └── templates
-│           ├── conf.ctmpl
-│           └── config.hcl
-├── consul_client_dc2
-│   ├── main.tf
-│   └── scripts
-│       ├── consul-template.sh
-│       ├── consul.sh
-│       ├── dns.sh
-│       ├── kv.sh
-│       ├── nginx.sh
-│       └── templates
-│           ├── conf.ctmpl
-│           └── config.hcl
