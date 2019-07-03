@@ -13,7 +13,7 @@ provider "aws" {
 # Terraform <= 0.11
 resource "aws_instance" "client" {
   ami                         = "ami-038ab9ac143cb81db"
-  count                       = 1
+  count                       = 2
   subnet_id                   = "${data.terraform_remote_state.client.outputs.subnet_id_dc2[0]}"
   instance_type               = "${data.terraform_remote_state.client.outputs.instance_type_dc2[0]}"
   private_ip                  = "172.31.32.${count.index + 21}"
@@ -44,7 +44,7 @@ resource "aws_instance" "client" {
   // This is our provisioning scripts
   provisioner "remote-exec" {
     inline = [
-      "sudo bash /tmp/consul.sh varna",
+      "sudo bash /tmp/consul.sh 0hi0",
       "sudo bash /tmp/kv.sh",
       "sudo bash /tmp/consul-template.sh",
       "sudo bash /tmp/nginx.sh",
@@ -53,6 +53,6 @@ resource "aws_instance" "client" {
   }
 }
 
-output "public_dns_clients_varna" {
+output "public_dns_clients_ohio {
   value = "${aws_instance.client.*.public_dns}"
 }

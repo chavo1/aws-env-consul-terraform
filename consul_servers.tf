@@ -2,7 +2,7 @@
 provider "aws" {
   region = "${var.region["virginia"]}"
 }
-module "consul_sofia" {
+module "consul_virginia" {
   source = "git@github.com:chavo1/aws-consul-terraform-multi-region"
 
   consul_version        = "${var.ami_virginia[var.consul_version]}"
@@ -18,7 +18,7 @@ module "consul_sofia" {
   vpc_security_group_id = "${module.vpc_virginia.aws_security_group[0]}"
 }
 
-module "consul_varna" {
+module "consul_ohio" {
   source = "git@github.com:chavo1/aws-consul-terraform-multi-region"
 
   consul_version        = "${var.ami_ohio[var.consul_version]}"
@@ -34,10 +34,10 @@ module "consul_varna" {
   vpc_security_group_id = "${module.vpc_ohio.aws_security_group[0]}"
 }
 
-output "public_dns_servers_sofia" {
-  value = "${module.consul_sofia.public_dns_servers}"
+output "public_dns_servers_virginia" {
+  value = "${module.consul_virginia.public_dns_servers}"
 }
 
-output "public_dns_servers_varna" {
-  value = "${module.consul_varna.public_dns_servers}"
+output "public_dns_servers_ohio" {
+  value = "${module.consul_ohio.public_dns_servers}"
 }
