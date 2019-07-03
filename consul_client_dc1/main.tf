@@ -44,7 +44,7 @@ resource "aws_instance" "client" {
   // This is our provisioning scripts
   provisioner "remote-exec" {
     inline = [
-      "sudo bash /tmp/consul.sh sofia",
+      "sudo bash /tmp/consul.sh virginia",
       "sudo bash /tmp/kv.sh",
       "sudo bash /tmp/consul-template.sh",
       "sudo bash /tmp/nginx.sh",
@@ -53,6 +53,6 @@ resource "aws_instance" "client" {
   }
 }
 
-output "public_dns_clients_sofia" {
+output "public_dns_clients_virginia" {
   value = "${aws_instance.client.*.public_dns}"
 }
