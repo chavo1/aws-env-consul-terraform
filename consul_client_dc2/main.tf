@@ -44,7 +44,7 @@ resource "aws_instance" "client" {
   // This is our provisioning scripts
   provisioner "remote-exec" {
     inline = [
-      "sudo bash /tmp/consul.sh 0hi0",
+      "sudo bash /tmp/consul.sh ohio",
       "sudo bash /tmp/kv.sh",
       "sudo bash /tmp/consul-template.sh",
       "sudo bash /tmp/nginx.sh",
