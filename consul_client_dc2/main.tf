@@ -12,8 +12,8 @@ provider "aws" {
 
 # Terraform <= 0.11
 resource "aws_instance" "client" {
-  ami                         = "ami-038ab9ac143cb81db"
-  count                       = 2
+  ami                         = "ami-07817d5fdd7cbf70c"
+  count                       = 1
   subnet_id                   = "${data.terraform_remote_state.client.outputs.subnet_id_dc2[0]}"
   instance_type               = "${data.terraform_remote_state.client.outputs.instance_type_dc2[0]}"
   private_ip                  = "172.31.32.${count.index + 21}"
@@ -53,6 +53,6 @@ resource "aws_instance" "client" {
   }
 }
 
-output "public_dns_clients_ohio {
+output "public_dns_clients_ohio" {
   value = "${aws_instance.client.*.public_dns}"
 }
