@@ -15,6 +15,9 @@ puts(public_dns_servers_ohio.length)
 
 require 'rubygems'
 require 'selenium-webdriver'
+require 'fileutils'
+
+FileUtils.mkdir_p 'scr/'
 
 1.upto(public_dns_servers_virginia.length) do |x|
   browser = Selenium::WebDriver.for :firefox

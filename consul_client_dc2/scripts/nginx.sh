@@ -60,13 +60,17 @@ cat << EOF > /etc/consul.d/web.json
     "service": {
         "name": "web",
         "tags": ["${HOST}"],
-        "port": 80
+        "port": 80,
+        "check": {
+          "args": ["/tmp/welcome.sh", "-limit", "256MB"],
+          "interval": "10s"
+      }
     },
     "checks": [
       {
           "id": "nginx_http_check",
           "name": "nginx",
-          "http": "http://127.0.0.1:80",
+          "http": "http://${HOST}:80",
           "tls_skip_verify": false,
           "method": "GET",
           "interval": "10s",
@@ -78,18 +82,10 @@ cat << EOF > /etc/consul.d/web.json
           "tcp": "127.0.0.1:80",
           "interval": "10s",
           "timeout": "1s"
-      },
-      {
-          "id": "script_check",
-          "name": "check_welcome_page",
-          "args": ["/tmp/welcome.sh", "-limit", "256MB"],
-          "interval": "10s",
-          "timeout": "1s"
       }
    ]
 }
 EOF
-
 
 consul reload
 
