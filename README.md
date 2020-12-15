@@ -1,4 +1,4 @@
-# This repo contains a set of modules for deploying a Consul cluster Multi-DC in two AWS regions with Client VPN using Terraform.
+# This repo contains a set of modules for deploying a Consul cluster Multi-DC in two AWS regions.
 
 ## AWS VPCs
 
@@ -7,10 +7,6 @@
 ## AWS cross-region VPC peering connection
 
 ### [This module](https://github.com/chavo1/peering-aws-vpc) will create cross-region VPC peering connection
-
-## AWS Client VPN
-
-### [This module](https://github.com/chavo1/client-vpn-aws-terraform) will create AWS Client VPN
 
 ## AWS EC2 (Consul servers)
 
@@ -38,4 +34,30 @@ terraform apply
 ```
 terraform init
 terraform apply 
+```
+### To test you will need Kitchen and Selenium:
+
+- Kitchen provides a test harness to execute infrastructure code on one or more platforms in isolation.
+- Install [kitchen.ci](https://kitchen.ci/)
+- Install [selenium](https://www.ranorex.com/resources/testing-wiki/selenium-testing/) and all its dependencies on Mac with [brew](https://brew.sh)
+
+```
+$ brew install selenium-server-standalone
+$ brew cask install java
+
+# GeckoDriver for firefox
+$ brew install geckodriver 
+
+# Chromedriver for chrome
+$ brew cask install chromedriver 
+```
+#### If you use `rbenv` set local to `2.6.0`
+```
+$ rbenv local 2.6.0
+```
+Than simply execute a following commands:
+```
+bundle exec kitchen converge
+bundle exec kitchen verify
+bundle exec kitchen destroy
 ```

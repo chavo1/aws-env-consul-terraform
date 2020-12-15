@@ -1,10 +1,10 @@
 # variables.tf
 
 variable "vpc_name" {
-  type = "list"
+  type = list(any)
 }
 variable "availabilityZone" {
-  type = "list"
+  type = list(any)
 }
 
 variable "instanceTenancy" {
@@ -20,11 +20,11 @@ variable "dnsHostNames" {
 }
 
 variable "vpcCIDRblock" {
-  type = "list"
+  type = list(any)
 }
 
 variable "subnetCIDRblock" {
-  type = "list"
+  type = list(any)
 }
 
 variable "destinationCIDRblock" {
@@ -32,7 +32,7 @@ variable "destinationCIDRblock" {
 }
 
 variable "ingressCIDRblock" {
-  type    = "list"
+  type    = list(any)
   default = ["0.0.0.0/0"]
 }
 
