@@ -6,3 +6,5 @@ terraform*
 test.sh
 Gemfile.lock
 scr/
+.ruby-version
+.terraform.lock.hcl
